@@ -1,16 +1,40 @@
 const input = document.querySelector('.input');
 
+let loaderContainer = document.querySelector('.loader-container');
+
 const clearInp = inputVal => {
   inputVal.value = '';
 };
 
+
+const renderLoader = () => {
+
+  const loader = `
+  <div class="loader"></div>
+  `;
+
+  loaderContainer.insertAdjacentHTML('afterbegin', loader); 
+}
+
+const clearLoader = () => {
+  
+  loaderContainer.innerHTML = ''; 
+}
+
+
+
 async function getFollowers() {
+
+  renderLoader(); 
+
   try {
     let input = document.querySelector('.input').value;
     const { data } = await axios.get(
       `https://www.instagram.com/${input}/?__a=1`
     );
 
+
+    clearLoader(); 
     let user = data.graphql.user;
     let posts = user.edge_owner_to_timeline_media.count;
     let followers = user.edge_followed_by.count;
@@ -41,6 +65,7 @@ async function getFollowers() {
       followers = followers + 'm';
     }
     
+
     const markup = `
     <div class="container">   
      <div class="image-block">
@@ -64,14 +89,17 @@ async function getFollowers() {
     document.querySelector('.users').insertAdjacentHTML('beforeend', markup);
   } catch (err) { 
     alert(`User doest exist`);
+    clearLoader(); 
   }
 }
 
 //* Final Function
 const getInfo = () => {
   getFollowers();
+
   clearInp(input);
 };
+
 
 let btn = document.querySelector('.btn');
 

@@ -24,6 +24,10 @@ body {
   width: 30%;
 }
 
+/*///////////////////////////////////////*/
+/* INPUT */
+
+
 .input {
   padding: 2rem 2.2rem;
   background-color: #f1f1f1;
@@ -38,6 +42,9 @@ body {
   color: rgba(0, 0, 0, 0.5);
   font-size: 1.7rem;
 }
+
+/*///////////////////////////////////////*/
+/* BUTTON */
 
 .btn {
   padding: 1.5rem 2rem;
@@ -59,19 +66,50 @@ body {
 }
 
 .btn:hover {
-  background-color: #e90322;  
+  background-color: #ff1938;  
 }
 
 .btn:active { 
-  transform: scale(0.95);
+  transform: scale(0.95);  
 }
 
 .delete-btn{
-  background-color: #2e2eff;
+  background-color: #ff2e7e;
 } 
 .delete-btn:hover {
-    background-color: #1236d8;  
+    background-color: #ca005e;  
   }
+
+/*///////////////////////////////////////*/
+/* LOADER */
+
+.loader-container{
+  margin: 5rem auto;
+  text-align: center; 
+}
+
+.loader{
+  display: inline-block;  
+  width: 10rem;
+  height: 10rem; 
+  border: 1rem solid #afafaf; 
+  border-radius: 50%; 
+  border-top-color: #ff0e56;    
+   
+  animation: load 1s linear   infinite;  
+}               
+ 
+@keyframes load{ 
+ 
+   
+ 100%{    
+   transform: rotate(360deg);
+ }
+} 
+
+/*///////////////////////////////////////*/
+/* CONTAINER */
+
 .container {
   background-color: #eee;
   margin: 5rem auto;
